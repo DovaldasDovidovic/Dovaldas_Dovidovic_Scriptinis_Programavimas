@@ -1,0 +1,23 @@
+% Laboratorinis darbas 2, Dovaldas Dovidovič EKSfm-26, 2026-09-17
+% Elementarios programos MATLAB funkcijos bei darbo su matricomis įsisavinimas 8 variantas
+
+% 1. Užduotis
+% a)
+a=5:2:34
+
+% b)
+b=exp(a)
+
+% c)
+c=a ./b
+
+% d)
+d=c'
+
+% 2. Užduotis
+% a)
+A=[pi/2, 3i; log(2), 2*pi];
+
+% b)
+B=[exp(A(1,1)), exp(A(1,2))]
+
