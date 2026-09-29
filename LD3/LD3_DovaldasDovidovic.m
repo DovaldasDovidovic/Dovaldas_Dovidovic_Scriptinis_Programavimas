@@ -43,6 +43,81 @@ bar(P)
 xlabel('Studentas')
 ylabel('Pazymys')
 title('Studentu egzaminu rezultatai')
+studentai = {'Dovaldas','Jonas', 'Mantas', 'Lukas', 'Osvaldas', 'Edvinas'}
+xticklabels(studentai)
+ylim([0 10])
+xticks(1:6)
+
+grid on
+
+figure(4)
+stem(P)
+xlabel('Studentas')
+ylabel('Pazymys')
+title('Studentu egzaminu rezultatai - diskretus')
+ylim([0 10])
+xlim([0.5 6.5])
+xticks(1:6)
+studentai = {'Dovaldas','Jonas', 'Mantas', 'Lukas', 'Osvaldas', 'Edvinas'}
+xticklabels(studentai)
+legend('1 Egzaminas', '2 Egzaminas', '3 Egzaminas', '4 Egzaminas')
+grid on 
+
+%% Papildoma uzduotis - Rezultatu grafinis 2D atvaizdavimas 19 variantas
+% Duomenys
+A = 7;
+f = 9;
+sigma = 1.2;
+U1 = 4.5;
+U2 = 2.5;
+
+% laiko vektorius
+t=0:0.002:1;
+
+% signalas
+s=A*cos(2*pi*f*t);
+
+% triukšmas
+n=sigma*randn(size(t));
+
+% signalas su triušmu 
+x=s+n;
+
+figure
+idx_U1=find(x>U1);
+
+%grafikas 1
+subplot(1,2,1)
+plot(t,x, 'b-', 'LineWidth',1.2)
+hold on
+x_0=x;
+x_0(abs(x_0)<U2) = 0;
+plot(t, x_0, 'y:','LineWidth', 1.5)
+yline(U1, '--','U1')
+yline(U2,'--','U2')
+xlabel('Laikas, s', 'FontSize', 14, 'FontWeight','bold')
+ylabel('Itampa, V', 'FontSize', 14, 'FontWeight', 'bold')
+title('Pradinis ir filtruotas signalai ')
+legend('Pradinis signalas','Filtruotas signalas', 'U1', 'U2')
+grid on
+xlim([min(t) max(t)])
+hold off
+
+% 2 grafikas
+subplot(1,2,2)
+stem(t(idx_U1),x(idx_U1))
+hold on
+max_idx=islocalmax(x(idx_U1));
+min_idx=islocalmin(x(idx_U1));
+plot(t(idx_U1(max_idx)),x(idx_U1(max_idx)),'o','MarkerSize', 12)
+plot(t(idx_U1(min_idx)),x(idx_U1(min_idx)),'s','MarkerSize', 12)
+xlabel('Laikas, s', 'FontSize',14,'FontWeight','bold')
+ylabel('Itampa, V', 'FontSize',14,'FontWeight','bold')
+title('Signalo reiksmes virsijancios U1')
+legend('x > U1','Maksimumai', 'Minimumai')
+grid on
+xlim([min(t) max(t)])
+hold off
 
 
 
