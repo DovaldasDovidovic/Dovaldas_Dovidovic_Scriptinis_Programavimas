@@ -1,0 +1,9 @@
+%%Laboratorinis
+%%darbas Rezultatų
+%%grafinis 3D atvaizdavimas 2 variantas. Dovaldas Dovidovič 
+
+x = -2:0.1:1;
+y = -2:0.1:1;
+[X,Y] = meshgrid(x,y);
+Z=1-2x^2-3y^2;
+surf=(X,Y,Z);
